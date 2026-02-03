@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "Přejít na {partnerName}",
+    "project": "Projekt {partnerName}",
+    "editIn": "Upravit v {partnerName}",
+    "projectDetails": "Podrobnosti projektu",
+    "currentShopifyStore": "Aktuální obchod Shopify",
+    "support": "Podpora",
+    "partnerSupport": "Podpora {partnerName}",
+    "partnerSupportDescription": "Pro jakékoli dotazy týkající se projektů {partnerName}",
+    "partnerDocsTitle": "Dokumentace {partnerName} x Shopify",
+    "partnerDocsDescription": "Zjistěte více o integraci {partnerName} x Shopify",
+    "partnerDocumentation": "Dokumentace {partnerName}",
+    "shopifySupport": "Podpora Shopify",
+    "shopifySupportDescription": "Pro jakékoli dotazy týkající se Shopify",
+    "termsAndConditions": "Obchodní podmínky {partnerName}"
+  },
+  "ProductsPublishing": {
+    "title": "Produkty publikované na {partnerName}",
+    "description": "Spravujte produkty publikované na {partnerName}",
+    "productsPublished": {
+      "one": "{count} produkt",
+      "other": "{count} produktů"
+    },
+    "productsPublishedOverflow": "{count}+ produktů",
+    "manage": "Spravovat"
+  }
+}

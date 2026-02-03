@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "前往 {partnerName}",
+    "project": "{partnerName} 项目",
+    "editIn": "在 {partnerName} 中编辑",
+    "projectDetails": "项目详情",
+    "currentShopifyStore": "当前 Shopify 商店",
+    "support": "支持",
+    "partnerSupport": "{partnerName} 支持",
+    "partnerSupportDescription": "如有任何关于 {partnerName} 项目的问题",
+    "partnerDocsTitle": "{partnerName} x Shopify 文档",
+    "partnerDocsDescription": "详细了解 {partnerName} x Shopify 集成",
+    "partnerDocumentation": "{partnerName} 文档",
+    "shopifySupport": "Shopify 支持",
+    "shopifySupportDescription": "如有任何关于 Shopify 的问题",
+    "termsAndConditions": "{partnerName} 条款和条件"
+  },
+  "ProductsPublishing": {
+    "title": "已发布到 {partnerName} 的产品",
+    "description": "管理已发布到 {partnerName} 的产品",
+    "productsPublished": {
+      "one": "{count} 个产品",
+      "other": "{count} 个产品"
+    },
+    "productsPublishedOverflow": "{count}+ 个产品",
+    "manage": "管理"
+  }
+}

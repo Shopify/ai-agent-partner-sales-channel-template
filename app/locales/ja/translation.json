@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "{partnerName}に移動",
+    "project": "{partnerName}プロジェクト",
+    "editIn": "{partnerName}で編集",
+    "projectDetails": "プロジェクトの詳細",
+    "currentShopifyStore": "現在のShopifyストア",
+    "support": "サポート",
+    "partnerSupport": "{partnerName}サポート",
+    "partnerSupportDescription": "{partnerName}プロジェクトに関するご質問はこちら",
+    "partnerDocsTitle": "{partnerName} x Shopifyドキュメント",
+    "partnerDocsDescription": "{partnerName} x Shopify連携の詳細",
+    "partnerDocumentation": "{partnerName}ドキュメント",
+    "shopifySupport": "Shopifyサポート",
+    "shopifySupportDescription": "Shopifyに関するご質問はこちら",
+    "termsAndConditions": "{partnerName}利用規約"
+  },
+  "ProductsPublishing": {
+    "title": "{partnerName}に公開された商品",
+    "description": "{partnerName}に公開された商品を管理",
+    "productsPublished": {
+      "one": "{count}件の商品",
+      "other": "{count}件の商品"
+    },
+    "productsPublishedOverflow": "{count}件以上の商品",
+    "manage": "管理"
+  }
+}

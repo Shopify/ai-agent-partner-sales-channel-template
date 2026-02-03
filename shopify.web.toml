@@ -1,0 +1,7 @@
+name = "AI Agent IDE Sales Channel Template"
+roles = ["frontend", "backend"]
+webhooks_path = "/webhooks/app/uninstalled"
+
+[commands]
+predev = "pnpm run db:migrate"
+dev = "pnpm react-router dev"

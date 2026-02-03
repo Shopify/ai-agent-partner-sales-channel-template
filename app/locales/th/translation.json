@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "ไปที่ {partnerName}",
+    "project": "โปรเจกต์ {partnerName}",
+    "editIn": "แก้ไขใน {partnerName}",
+    "projectDetails": "รายละเอียดโปรเจกต์",
+    "currentShopifyStore": "ร้านค้า Shopify ปัจจุบัน",
+    "support": "ความช่วยเหลือ",
+    "partnerSupport": "ฝ่ายสนับสนุน {partnerName}",
+    "partnerSupportDescription": "สำหรับคำถามเกี่ยวกับโปรเจกต์ {partnerName}",
+    "partnerDocsTitle": "เอกสาร {partnerName} x Shopify",
+    "partnerDocsDescription": "เรียนรู้เพิ่มเติมเกี่ยวกับการผสานรวม {partnerName} x Shopify",
+    "partnerDocumentation": "เอกสาร {partnerName}",
+    "shopifySupport": "ฝ่ายสนับสนุน Shopify",
+    "shopifySupportDescription": "สำหรับคำถามเกี่ยวกับ Shopify",
+    "termsAndConditions": "ข้อกำหนดและเงื่อนไขของ {partnerName}"
+  },
+  "ProductsPublishing": {
+    "title": "สินค้าที่เผยแพร่ไปยัง {partnerName}",
+    "description": "จัดการสินค้าที่เผยแพร่ไปยัง {partnerName}",
+    "productsPublished": {
+      "one": "{count} สินค้า",
+      "other": "{count} สินค้า"
+    },
+    "productsPublishedOverflow": "{count}+ สินค้า",
+    "manage": "จัดการ"
+  }
+}

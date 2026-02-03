@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "Ga naar {partnerName}",
+    "project": "{partnerName}-project",
+    "editIn": "Bewerken in {partnerName}",
+    "projectDetails": "Projectdetails",
+    "currentShopifyStore": "Huidige Shopify-winkel",
+    "support": "Ondersteuning",
+    "partnerSupport": "{partnerName}-ondersteuning",
+    "partnerSupportDescription": "Voor alle vragen over {partnerName}-projecten",
+    "partnerDocsTitle": "{partnerName} x Shopify-documentatie",
+    "partnerDocsDescription": "Meer informatie over de {partnerName} x Shopify-integratie",
+    "partnerDocumentation": "{partnerName}-documentatie",
+    "shopifySupport": "Shopify-ondersteuning",
+    "shopifySupportDescription": "Voor alle vragen over Shopify",
+    "termsAndConditions": "{partnerName} algemene voorwaarden"
+  },
+  "ProductsPublishing": {
+    "title": "Producten gepubliceerd naar {partnerName}",
+    "description": "Beheer producten die zijn gepubliceerd naar {partnerName}",
+    "productsPublished": {
+      "one": "{count} product",
+      "other": "{count} producten"
+    },
+    "productsPublishedOverflow": "{count}+ producten",
+    "manage": "Beheren"
+  }
+}

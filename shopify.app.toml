@@ -1,0 +1,25 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = ""
+name = "sales-channel-app"
+application_url = "https://example.com/app"
+embedded = true
+
+[webhooks]
+api_version = "2026-04"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products,write_products,read_discounts,write_discounts,read_inventory,write_inventory,read_price_rules,write_price_rules,read_themes,unauthenticated_read_product_listings,write_publications"
+
+[auth]
+redirect_urls = [
+  "https://example.com/auth/callback",
+  "https://example.com/auth/shopify/callback",
+  "https://example.com/api/auth/callback",
+  "https://example.com/auth/platform/callback"
+]
+
+[pos]
+embedded = false
+
