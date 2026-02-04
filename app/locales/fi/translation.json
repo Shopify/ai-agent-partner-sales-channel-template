@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "Siirry kohteeseen {partnerName}",
+    "project": "{partnerName}-projekti",
+    "editIn": "Muokkaa kohteessa {partnerName}",
+    "projectDetails": "Projektin tiedot",
+    "currentShopifyStore": "Nykyinen Shopify-kauppa",
+    "support": "Tuki",
+    "partnerSupport": "{partnerName}-tuki",
+    "partnerSupportDescription": "Kaikissa {partnerName}-projekteihin liittyvissä kysymyksissä",
+    "partnerDocsTitle": "{partnerName} x Shopify -dokumentaatio",
+    "partnerDocsDescription": "Lue lisää {partnerName} x Shopify -integraatiosta",
+    "partnerDocumentation": "{partnerName}-dokumentaatio",
+    "shopifySupport": "Shopify-tuki",
+    "shopifySupportDescription": "Kaikissa Shopifyyn liittyvissä kysymyksissä",
+    "termsAndConditions": "{partnerName} käyttöehdot"
+  },
+  "ProductsPublishing": {
+    "title": "Tuotteet julkaistu kohteessa {partnerName}",
+    "description": "Hallitse kohteessa {partnerName} julkaistuja tuotteita",
+    "productsPublished": {
+      "one": "{count} tuote",
+      "other": "{count} tuotetta"
+    },
+    "productsPublishedOverflow": "Yli {count} tuotetta",
+    "manage": "Hallitse"
+  }
+}

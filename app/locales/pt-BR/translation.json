@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "Ir para {partnerName}",
+    "project": "Projeto {partnerName}",
+    "editIn": "Editar em {partnerName}",
+    "projectDetails": "Detalhes do projeto",
+    "currentShopifyStore": "Loja Shopify atual",
+    "support": "Atendimento",
+    "partnerSupport": "Suporte {partnerName}",
+    "partnerSupportDescription": "Para dúvidas relacionadas a projetos {partnerName}",
+    "partnerDocsTitle": "Documentação {partnerName} x Shopify",
+    "partnerDocsDescription": "Saiba mais sobre a integração {partnerName} x Shopify",
+    "partnerDocumentation": "Documentação {partnerName}",
+    "shopifySupport": "Suporte Shopify",
+    "shopifySupportDescription": "Para dúvidas relacionadas à Shopify",
+    "termsAndConditions": "Termos e condições {partnerName}"
+  },
+  "ProductsPublishing": {
+    "title": "Produtos publicados no {partnerName}",
+    "description": "Gerencie os produtos publicados no {partnerName}",
+    "productsPublished": {
+      "one": "{count} produto",
+      "other": "{count} produtos"
+    },
+    "productsPublishedOverflow": "{count}+ produtos",
+    "manage": "Gerenciar"
+  }
+}

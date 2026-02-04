@@ -5,3 +5,9 @@
 # React Router
 /.react-router/
 /build/
+*.sqlite
+
+# GraphQL Codegen files
+app/types/admin-*.schema.json
+app/types/admin.generated.d.ts
+app/types/admin.types.d.ts

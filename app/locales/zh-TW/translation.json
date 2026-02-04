@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "前往 {partnerName}",
+    "project": "{partnerName} 專案",
+    "editIn": "在 {partnerName} 中編輯",
+    "projectDetails": "專案詳情",
+    "currentShopifyStore": "目前的 Shopify 商店",
+    "support": "支援服務",
+    "partnerSupport": "{partnerName} 支援",
+    "partnerSupportDescription": "如有任何關於 {partnerName} 專案的問題",
+    "partnerDocsTitle": "{partnerName} x Shopify 文件",
+    "partnerDocsDescription": "深入瞭解 {partnerName} x Shopify 整合",
+    "partnerDocumentation": "{partnerName} 文件",
+    "shopifySupport": "Shopify 支援",
+    "shopifySupportDescription": "如有任何關於 Shopify 的問題",
+    "termsAndConditions": "{partnerName} 條款與條件"
+  },
+  "ProductsPublishing": {
+    "title": "已發佈到 {partnerName} 的產品",
+    "description": "管理已發佈到 {partnerName} 的產品",
+    "productsPublished": {
+      "one": "{count} 個產品",
+      "other": "{count} 個產品"
+    },
+    "productsPublishedOverflow": "{count}+ 個產品",
+    "manage": "管理"
+  }
+}

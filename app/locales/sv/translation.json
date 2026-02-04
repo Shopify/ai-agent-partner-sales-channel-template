@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "Gå till {partnerName}",
+    "project": "{partnerName}-projekt",
+    "editIn": "Redigera i {partnerName}",
+    "projectDetails": "Projektinformation",
+    "currentShopifyStore": "Aktuell Shopify-butik",
+    "support": "Support",
+    "partnerSupport": "{partnerName}-support",
+    "partnerSupportDescription": "För frågor om {partnerName}-projekt",
+    "partnerDocsTitle": "{partnerName} x Shopify-dokumentation",
+    "partnerDocsDescription": "Läs mer om {partnerName} x Shopify-integrationen",
+    "partnerDocumentation": "{partnerName}-dokumentation",
+    "shopifySupport": "Shopify-support",
+    "shopifySupportDescription": "För frågor om Shopify",
+    "termsAndConditions": "{partnerName} villkor"
+  },
+  "ProductsPublishing": {
+    "title": "Produkter publicerade på {partnerName}",
+    "description": "Hantera produkter publicerade på {partnerName}",
+    "productsPublished": {
+      "one": "{count} produkt",
+      "other": "{count} produkter"
+    },
+    "productsPublishedOverflow": "{count}+ produkter",
+    "manage": "Hantera"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "{partnerName}(으)로 이동",
+    "project": "{partnerName} 프로젝트",
+    "editIn": "{partnerName}에서 편집",
+    "projectDetails": "프로젝트 세부 정보",
+    "currentShopifyStore": "현재 Shopify 스토어",
+    "support": "지원",
+    "partnerSupport": "{partnerName} 지원",
+    "partnerSupportDescription": "{partnerName} 프로젝트 관련 문의",
+    "partnerDocsTitle": "{partnerName} x Shopify 문서",
+    "partnerDocsDescription": "{partnerName} x Shopify 통합에 대해 자세히 알아보기",
+    "partnerDocumentation": "{partnerName} 문서",
+    "shopifySupport": "Shopify 지원",
+    "shopifySupportDescription": "Shopify 관련 문의",
+    "termsAndConditions": "{partnerName} 이용약관"
+  },
+  "ProductsPublishing": {
+    "title": "{partnerName}에 게시된 제품",
+    "description": "{partnerName}에 게시된 제품 관리",
+    "productsPublished": {
+      "one": "{count}개 제품",
+      "other": "{count}개 제품"
+    },
+    "productsPublishedOverflow": "{count}개 이상의 제품",
+    "manage": "관리"
+  }
+}

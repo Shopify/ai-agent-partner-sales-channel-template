@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "{partnerName} platformuna git",
+    "project": "{partnerName} projesi",
+    "editIn": "{partnerName} üzerinde düzenle",
+    "projectDetails": "Proje ayrıntıları",
+    "currentShopifyStore": "Mevcut Shopify mağazası",
+    "support": "Destek",
+    "partnerSupport": "{partnerName} desteği",
+    "partnerSupportDescription": "{partnerName} projeleriyle ilgili tüm sorular için",
+    "partnerDocsTitle": "{partnerName} x Shopify belgeleri",
+    "partnerDocsDescription": "{partnerName} x Shopify entegrasyonu hakkında daha fazla bilgi edinin",
+    "partnerDocumentation": "{partnerName} belgeleri",
+    "shopifySupport": "Shopify desteği",
+    "shopifySupportDescription": "Shopify ile ilgili tüm sorular için",
+    "termsAndConditions": "{partnerName} Hüküm ve Koşulları"
+  },
+  "ProductsPublishing": {
+    "title": "{partnerName} platformunda yayınlanan ürünler",
+    "description": "{partnerName} platformunda yayınlanan ürünleri yönetin",
+    "productsPublished": {
+      "one": "{count} ürün",
+      "other": "{count} ürün"
+    },
+    "productsPublishedOverflow": "{count}+ ürün",
+    "manage": "Yönet"
+  }
+}

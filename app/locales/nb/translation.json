@@ -1,0 +1,29 @@
+{
+  "LandingPage": {
+    "heading": "{logo} {partnerName}",
+    "goTo": "Gå til {partnerName}",
+    "project": "{partnerName}-prosjekt",
+    "editIn": "Rediger i {partnerName}",
+    "projectDetails": "Prosjektdetaljer",
+    "currentShopifyStore": "Nåværende Shopify-butikk",
+    "support": "Støtte",
+    "partnerSupport": "{partnerName}-støtte",
+    "partnerSupportDescription": "For alle spørsmål relatert til {partnerName}-prosjekter",
+    "partnerDocsTitle": "{partnerName} x Shopify-dokumentasjon",
+    "partnerDocsDescription": "Lær mer om {partnerName} x Shopify-integrasjon",
+    "partnerDocumentation": "{partnerName}-dokumentasjon",
+    "shopifySupport": "Shopify-støtte",
+    "shopifySupportDescription": "For alle spørsmål relatert til Shopify",
+    "termsAndConditions": "{partnerName} vilkår og betingelser"
+  },
+  "ProductsPublishing": {
+    "title": "Produkter publisert til {partnerName}",
+    "description": "Administrer produkter publisert til {partnerName}",
+    "productsPublished": {
+      "one": "{count} produkt",
+      "other": "{count} produkter"
+    },
+    "productsPublishedOverflow": "{count}+ produkter",
+    "manage": "Administrer"
+  }
+}
