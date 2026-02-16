@@ -34,7 +34,7 @@ export const config = {
   /** If you have specific partnership docs, enter them here. Otherwise your general documentation. */
   docsUrl: "https://docs.example.app",
   publicApiKey: process.env.SHOPIFY_API_KEY!,
-  afterAuthRedirectUrl: "#",
+  afterAuthRedirectUrl: "http://localhost:3000/auth/shopify/callback",
   termsOfServiceUrl: "https://example.app/terms",
   isStagingEnv: false,
 } satisfies PartnerConfig;

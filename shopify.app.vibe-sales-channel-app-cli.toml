@@ -1,0 +1,20 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "5674d642a53c4eb9b66381f776d73561"
+name = "vibe-sales-channel-app-cli"
+application_url = "https://example.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+include_config_on_deploy = true
+
+[webhooks]
+api_version = "2026-04"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_discounts,read_inventory,read_price_rules,read_products,read_themes,unauthenticated_read_product_listings,write_discounts,write_inventory,write_price_rules,write_products,write_publications"
+
+[auth]
+redirect_urls = [ "http://localhost:3000/auth/shopify/callback" ]

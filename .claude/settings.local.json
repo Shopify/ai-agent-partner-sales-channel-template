@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__gworkspace-mcp__search_drive",
+      "mcp__gworkspace-mcp__get_metadata",
+      "Bash(python3:*)",
+      "WebSearch",
+      "WebFetch(domain:docs.stripe.com)",
+      "mcp__gworkspace-mcp__get_batch_api_docs",
+      "WebFetch(domain:developers.google.com)",
+      "WebFetch(domain:shopify.dev)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "shopify-dev-mcp"
+  ]
+}
