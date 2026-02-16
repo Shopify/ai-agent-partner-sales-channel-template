@@ -150,12 +150,8 @@ curl --location 'https://partners.shopify.com/api/dev_store_transfers' \
 Before initiating a transfer, you can check whether a dev store is eligible for transfer. This is useful for verifying that a store hasn't already been transferred or already claimed by the user.
 
 ```sh
-curl --location 'https://partners.shopify.com/api/dev_store_transfers/check' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer $GLOBAL-ACCESS-TOKEN' \
---data '{
-    "shop_permanent_domain": "$SHOP-PERMANENT-DOMAIN"
-}'
+curl --location 'https://partners.shopify.com/api/dev_store_transfer_status?shop_permanent_domain=$SHOP-PERMANENT-DOMAIN' \
+--header 'Authorization: $GLOBAL-ACCESS-TOKEN
 ```
 
 The response will indicate whether the store is transferable and, if not, the reason why.
