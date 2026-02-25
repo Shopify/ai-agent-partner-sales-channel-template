@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "license": "MIT",
+  "author": "Shopify Inc.",
+  "engines": {
+    "node": ">=20.19 <22 || >=22.12"
+  },
   "scripts": {
     "build": "react-router build",
     "dev": "shopify app dev",
