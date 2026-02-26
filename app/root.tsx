@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 export const middleware = [i18nextMiddleware];
 
 export async function loader({ context }: Route.LoaderArgs) {
-  let locale = getLocale(context);
+  const locale = getLocale(context);
   return data(
     { locale }, // Return the locale to the UI
     { headers: { "Set-Cookie": await localeCookie.serialize(locale) } },
@@ -22,7 +22,7 @@ export async function loader({ context }: Route.LoaderArgs) {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  let { i18n } = useTranslation();
+  const { i18n } = useTranslation();
   
   return (
     <html lang={i18n.language} dir={i18n.dir(i18n.language)}>
@@ -47,7 +47,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App({ loaderData: { locale } }: Route.ComponentProps) {
-  let { i18n } = useTranslation();
+  const { i18n } = useTranslation();
   useEffect(() => {
     if (i18n.language !== locale) i18n.changeLanguage(locale);
   }, [locale, i18n]);

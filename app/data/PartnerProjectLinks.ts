@@ -7,7 +7,10 @@ export class PartnerProjectLinks {
   constructor({
     admin,
     session,
-  }: Awaited<ReturnType<typeof authenticate.admin>>) {
+  }: Pick<
+    Awaited<ReturnType<typeof authenticate.admin>>,
+    "admin" | "session"
+  >) {
     this.admin = admin;
     this.session = session;
   }

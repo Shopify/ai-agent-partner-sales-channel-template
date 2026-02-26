@@ -1,6 +1,6 @@
 import type { Route } from "./+types/scopes_update";
 import { authenticate } from "app/shopify.server";
-import db from "app/db";
+import { db } from "app/db";
 import { sessionTable } from "app/db/schema";
 import { eq } from "drizzle-orm";
 

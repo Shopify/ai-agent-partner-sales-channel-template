@@ -1,10 +1,4 @@
-import {
-  sqliteTable,
-  text,
-  integer,
-  uniqueIndex,
-  blob,
-} from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer, blob } from "drizzle-orm/sqlite-core";
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 
 // Drizzle session table compatible with Shopify's Drizzle adapter

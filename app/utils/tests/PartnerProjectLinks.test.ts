@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 
 // Mock the shopify.server module before importing PartnerProjectLinks
 vi.mock("app/shopify.server", () => ({
@@ -8,6 +8,7 @@ vi.mock("app/shopify.server", () => ({
 }));
 
 import { PartnerProjectLinks } from "app/data/PartnerProjectLinks";
+import type { authenticate } from "app/shopify.server";
 
 /**
  * These tests guard against shipping placeholder fallback URLs.
@@ -21,18 +22,18 @@ describe("PartnerProjectLinks placeholder guard", () => {
         data: { shop: { metafield: null } },
       }),
     }),
-  };
+  } as Awaited<ReturnType<typeof authenticate.admin>>["admin"];
 
   const mockSession = {
     shop: "test-shop.myshopify.com",
     accessToken: "test-token",
-  };
+  } as Awaited<ReturnType<typeof authenticate.admin>>["session"];
 
   it("getProjectFrontendUrl should not return a placeholder URL", async () => {
     const links = new PartnerProjectLinks({
       admin: mockAdmin,
       session: mockSession,
-    } as any);
+    });
 
     const url = await links.getProjectFrontendUrl();
 
@@ -44,7 +45,7 @@ describe("PartnerProjectLinks placeholder guard", () => {
     const links = new PartnerProjectLinks({
       admin: mockAdmin,
       session: mockSession,
-    } as any);
+    });
 
     const url = await links.getProjectManagementUrl();
 

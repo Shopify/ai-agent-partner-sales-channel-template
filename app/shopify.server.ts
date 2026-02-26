@@ -4,7 +4,7 @@ import {
   ApiVersion,
 } from "@shopify/shopify-app-react-router/server";
 import { DrizzleSessionStorageSQLite } from "@shopify/shopify-app-session-storage-drizzle";
-import db from "./db";
+import { db } from "./db";
 import { sessionTable } from "./db/schema";
 
 export const apiVersion = ApiVersion.April26;

@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "license": "MIT",
+  "author": "Shopify Inc.",
+  "engines": {
+    "node": ">=20.19 <22 || >=22.12 || >=24"
+  },
   "scripts": {
     "build": "react-router build",
     "dev": "shopify app dev",
@@ -13,14 +18,15 @@
     "env": "shopify app env",
     "start": "react-router-serve ./build/server/index.js",
     "test": "vitest run",
-    "typecheck": "react-router typegen && tsc",
+    "typecheck": "react-router typegen && graphql-codegen && tsc",
     "prestart": "pnpm setup",
     "postinstall": "[ -z \"$CI\" ] && pnpm setup || true",
     "setup": "pnpm db:migrate",
     "shopify": "shopify",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "refresh-graphql": "graphql-codegen"
+    "refresh-graphql": "graphql-codegen",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint ."
   },
   "dependencies": {
     "@libsql/client": "^0.17.0",
@@ -58,6 +64,15 @@
     "typescript": "^5.9.2",
     "vite": "^7.1.7",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^4.0.18"
+    "vitest": "^4.0.18",
+    "@types/eslint": "^9.6.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.1",
+    "eslint-import-resolver-typescript": "^3.10.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2"
   }
 }
