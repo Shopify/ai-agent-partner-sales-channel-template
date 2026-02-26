@@ -57,7 +57,7 @@
     "@shopify/cli": "^3.90.0",
     "@tailwindcss/vite": "^4.1.13",
     "@types/node": "^22.19.8",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "graphql-config": "^5.1.5",
     "tailwindcss": "^4.1.13",
