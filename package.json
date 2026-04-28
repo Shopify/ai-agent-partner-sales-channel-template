@@ -55,7 +55,7 @@
     "@react-router/dev": "7.12.0",
     "@shopify/api-codegen-preset": "^1.2.2",
     "@shopify/cli": "^3.90.0",
-    "@tailwindcss/vite": "^4.1.13",
+    "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^22.19.8",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
