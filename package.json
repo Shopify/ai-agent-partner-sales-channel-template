@@ -41,7 +41,7 @@
     "@shopify/shopify-app-session-storage-drizzle": "^3.0.5",
     "drizzle-kit": "^0.31.10",
     "drizzle-orm": "^0.45.2",
-    "i18next": "^25.8.1",
+    "i18next": "^25.10.10",
     "i18next-browser-languagedetector": "^8.2.1",
     "isbot": "^5.1.37",
     "react": "^19.2.4",
