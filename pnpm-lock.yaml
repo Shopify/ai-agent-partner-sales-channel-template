@@ -36,8 +36,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1(react-dom@19.2.4(react@19.2.4))(react-router@7.12.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
       '@shopify/shopify-app-session-storage-drizzle':
-        specifier: ^3.0.5
-        version: 3.0.5(@shopify/shopify-api@12.3.0)(@shopify/shopify-app-session-storage@4.0.5(@shopify/shopify-api@12.3.0))(drizzle-orm@0.45.2(@libsql/client@0.17.2))
+        specifier: ^4.0.0
+        version: 4.0.0(@shopify/shopify-api@12.3.0)(@shopify/shopify-app-session-storage@4.0.5(@shopify/shopify-api@12.3.0))(drizzle-orm@0.45.2(@libsql/client@0.17.2))
       drizzle-kit:
         specifier: ^0.31.10
         version: 0.31.10
@@ -1923,12 +1923,12 @@ packages:
       react-dom: '>=18'
       react-router: ^7.6.2
 
-  '@shopify/shopify-app-session-storage-drizzle@3.0.5':
-    resolution: {integrity: sha512-jdnYupVM2p7H0Y/lgWxM070MAbIavAgk3DZaHt3bJ7mHZ8ek8NY6TNDT3jUQgK6T0NIQDZjem3F1wHLH7x23Sw==}
+  '@shopify/shopify-app-session-storage-drizzle@4.0.0':
+    resolution: {integrity: sha512-1Vn1q0v5LMsgbiJvLvf3FxvD0OaEL5H7TOHEJ1WY5pN0WXn/ns3uWJxjl+YLngz2CKvLeblcJSRdTrKN3R65Rg==}
     peerDependencies:
-      '@shopify/shopify-api': ^12.0.0
-      '@shopify/shopify-app-session-storage': ^4.0.0
-      drizzle-orm: ^0.40.0
+      '@shopify/shopify-api': ^13.0.0
+      '@shopify/shopify-app-session-storage': ^5.0.0
+      drizzle-orm: ^0.44.7
 
   '@shopify/shopify-app-session-storage@4.0.5':
     resolution: {integrity: sha512-ZL6tV8hccOO1nTLmj5rbzl++SZhgokQ73CY4v30MRTem/IhbneQag3/tUg9rPjAaDrROEyokGeJTgOq2gD+1hg==}
@@ -6837,7 +6837,7 @@ snapshots:
       react-dom: 19.2.4(react@19.2.4)
       react-router: 7.12.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
-  '@shopify/shopify-app-session-storage-drizzle@3.0.5(@shopify/shopify-api@12.3.0)(@shopify/shopify-app-session-storage@4.0.5(@shopify/shopify-api@12.3.0))(drizzle-orm@0.45.2(@libsql/client@0.17.2))':
+  '@shopify/shopify-app-session-storage-drizzle@4.0.0(@shopify/shopify-api@12.3.0)(@shopify/shopify-app-session-storage@4.0.5(@shopify/shopify-api@12.3.0))(drizzle-orm@0.45.2(@libsql/client@0.17.2))':
     dependencies:
       '@shopify/shopify-api': 12.3.0
       '@shopify/shopify-app-session-storage': 4.0.5(@shopify/shopify-api@12.3.0)
