@@ -168,6 +168,12 @@ Example Response:
 
 Before initiating a transfer, you can check whether a dev store is eligible for transfer. This is useful for verifying that a store hasn't already been transferred or already claimed by the user.
 
+The "status" field returns a string with one of the following values:
+- "ready": the shop is transferable.
+- "pending": the shop is still being set up and is NOT ready for transfer yet.
+- "not_transferable": the shop cannot be transferred.
+
+
 ```sh
 curl --location 'https://partners.shopify.com/api/dev_store_transfer_status?shop_permanent_domain=$SHOP-PERMANENT-DOMAIN' \
 --header 'Authorization: $GLOBAL-ACCESS-TOKEN'
@@ -177,7 +183,8 @@ Example Response:
 
 ```json
 {
-    "transferable": true
+    "transferable": true,
+    "status": "ready"
 }
 ```
 
