@@ -38,6 +38,15 @@ This documentation is intended for the engineering and development teams respons
 
 Throughout this guide, you will work with two separate apps, each serving a distinct purpose. The Partner App is used to manage the lifecycle of dev stores -- creating them, generating claim URLs, and transferring ownership. Your Sales Channel App is installed into each dev store and provides the API access tokens needed to interact with individual stores, including Admin API tokens for backend operations and Storefront API tokens for frontend operations. Your Sales Channel App needs to go through Shopify's App Review process.
 
+## Security Criteria
+
+To use the Shopify Vibe Partner Program, your integration must meet the following security criteria:
+
+- Store domains are immutably configured at the environment level
+- LLM prompts cannot override the configured store domain
+- User inputs cannot manipulate which store receives admin tokens
+- The store domain parameter is hardcoded and inaccessible to the LLM's decision-making process
+
 ## Getting Started
 
 Before you can begin the technical integration, you must complete the following steps:
