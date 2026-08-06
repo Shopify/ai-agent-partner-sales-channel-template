@@ -14,15 +14,266 @@ This documentation is intended for the engineering and development teams respons
 
 ## In This Guide
 
-- [Glossary](#glossary)
-- [Understanding the Two-App Architecture](#understanding-the-two-app-architecture)
-- [Getting Started](#getting-started)
-- [Partner App: Managing Dev Stores](#partner-app-managing-dev-stores)
-- [Your Sales Channel App: Accessing Store APIs](#your-sales-channel-app-accessing-store-apis)
-- [Connect Existing Merchants](#connect-existing-merchants)
-- [Changelog](#changelog)
+- [Merchant Journey](#merchant-journey)
+  - [Overall merchant flow](#overall-merchant-flow)
+  - [Overall content guidelines](#overall-content-guidelines)
+  - [Integrate with Shopify](#integrate-with-shopify)
+  - [Create a new store and claim](#create-a-new-store-and-claim)
+  - [Connect to an existing store](#connect-to-an-existing-store)
+  - [Partner sales channel](#partner-sales-channel)
+  - [Shopify onboarding steps](#shopify-onboarding-steps)
+- [Technical Reference](#technical-reference)
+  - [Glossary](#glossary)
+  - [Understanding the Two-App Architecture](#understanding-the-two-app-architecture)
+  - [Security Criteria](#security-criteria)
+  - [Getting Started](#getting-started)
+  - [Partner App: Managing Dev Stores](#partner-app-managing-dev-stores)
+  - [Your Sales Channel App: Accessing Store APIs](#your-sales-channel-app-accessing-store-apis)
+  - [Connect Existing Merchants](#connect-existing-merchants)
+  - [Changelog](#changelog)
 
-## Glossary
+## Merchant Journey
+
+### Overall merchant flow
+
+Four main steps take merchants from the first prompt to operating their store. At step 2, the flow divides between creating a new store and connecting an existing store.
+
+#### The flow at a glance
+
+Merchants start by expressing commerce intent to begin their journey with Shopify. The experience diverges depending on whether they create a new store or connect an existing one. Both paths converge at admin home, where merchants can continue building on the AI Builder's platform.
+
+![Merchant journey flow diagram. Merchants express commerce intent, integrate Shopify, then create a store or connect an existing store. Both paths lead to Shopify onboarding.](docs/images/merchant-journey/overall-merchant-flow.png)
+
+### Overall content guidelines
+
+Use these conventions to name each moment and write its copy. The conventions make Shopify integrations consistent across AI builders.
+
+Shopify is the commerce engine behind your users' stores. It powers their products, checkout, and payments. Your platform builds the store's look and feel, and Shopify makes it sales-ready.
+
+#### Principles
+
+Four rules apply to each merchant-facing string.
+
+##### Explain before the click
+
+Say what Shopify is, why it is valuable, and what the merchant agrees to before they commit.
+
+##### Don't assume, orient
+
+Always make sure the merchant knows where they are in the process and what to do next. For example, tell merchants they can build their Shopify store for free on your platform. Tell them they need a Shopify subscription when they are ready to sell.
+
+##### No insider terms
+
+Write for someone who has never used Shopify. Replace words that only make sense inside Shopify.
+
+##### One word per moment
+
+Use the canonical verb for each step. The headline and the action button or call to action should match.
+
+#### Words to avoid
+
+Replace insider vocabulary with plain language.
+
+| Don't use | Use instead |
+| --- | --- |
+| e-commerce | commerce, online store, or store |
+| backend | Say what it does: products, checkout, and payments. |
+| admin, as a generic noun | "Your Shopify store." Only use "admin" for the literal `admin.shopify.com` URL. |
+| storefront, headless | store, Shopify, or your Shopify store |
+| preview store | store or your Shopify store |
+| dev store, development store | your store |
+| auth, OAuth, authenticate | log in or sign in. Do not expose the technical term. |
+
+#### Talking about Shopify, principles for your agent
+
+The preceding guidance applies to deterministic surfaces, such as buttons, cards, and set strings. This section applies to what your agent says about Shopify in open conversation. Treat these principles as agent rules.
+
+##### Facts to state correctly
+
+- **Shopify is the commerce engine.** It powers products, checkout, and payments. The storefront is built on the partner platform, and Shopify makes it sales-ready.
+- **It's free to build.** A paid plan is only needed when the merchant is ready to sell. Plans start at $1 per month.
+- **Creating a store does not charge the merchant** or commit them to selling.
+
+Do not improvise these facts. If you are unsure of a number or term, follow the guidance in [Defer when unsure](#defer-when-unsure).
+
+##### Surface at the right moment
+
+- **Before the merchant agrees:** Say what Shopify is and what they agree to.
+- **When the store is built:** The store is ready to preview and claim. It is not yet ready to sell.
+- **Before they expect to be live:** Building a store does not open it for business. The merchant needs an active plan, a payment method, and store settings such as shipping and taxes. Set this expectation early.
+- **At claim:** Explain that claiming makes the store theirs and creates their Shopify login.
+
+##### Framing and voice
+
+- Talk about Shopify as a capability inside the partner platform, not a separate setup tool.
+- Use the canonical verbs: create a store, connect an existing store, claim, and subscribe. Use "connect" only for an existing store.
+- Write for someone who has never used Shopify. Avoid insider terms such as admin, backend, dev store, and OAuth.
+- Use a straightforward and friendly voice. Do not oversell.
+
+##### Never say
+
+| Never say | Why |
+| --- | --- |
+| A free trial or $1 plan to a merchant connecting an existing store | They may already use a paid plan. |
+| That a merchant is "live" or "ready to sell" before they configure a plan and payments | The statement is not true until billing and payments are configured. |
+| Specific refund, tax, or policy details that you cannot confirm | An incorrect Shopify fact reflects on both platforms. |
+| Guaranteed region-specific details, such as payment availability or fees | These details vary by market. |
+
+##### Defer when unsure
+
+If the merchant asks about pricing, billing, policies, or other facts you cannot confirm, state what you know. Direct the merchant to their Shopify store or the Shopify Help Center. Do not guess.
+
+Keep changing facts current. Do not hardcode pricing, trial terms, or store status. When possible, get this information from Shopify at runtime.
+
+### Integrate with Shopify
+
+When merchants express commerce intent, the AI Builder proposes a Shopify integration.
+
+#### General guidelines
+
+The AI Builder detects commerce intent in the prompt and proposes Shopify inline. Before the click, name what Shopify is, what it powers, and what the merchant agrees to.
+
+![An AI Builder proposes a Shopify integration after it detects commerce intent.](docs/images/merchant-journey/integrate-with-shopify.png)
+
+##### Detect commerce intent
+
+When a merchant signals that they want to sell, suggest Shopify inline. Examples include "start an online store," "sell my pottery," and "build a shop for my brand."
+
+##### Communicate what Shopify is and what the merchant agrees to
+
+Give this information before the click. Name Shopify as the commerce engine that powers the merchant's storefront, products, and checkout. Show the value, including real checkout, free store creation, and sales across channels.
+
+##### What to include and what to skip
+
+**Include**
+
+- **What Shopify is.** "Shopify is the commerce engine. It powers your storefront, products, and checkout."
+- **What gets created.** "A real Shopify store, with a live storefront and connected checkout, free to try."
+
+**Skip**
+
+- A long preamble before the offer.
+- A menu of static site, store, or portfolio choices when the merchant's intent is clear.
+
+##### Match the platform's existing language
+
+Word choice determines whether Shopify feels like a built-in capability or an external setup task. "Integrate Shopify" or "Enable Shopify" presents a one-click capability. "Connect to Shopify" or "Install Shopify" suggests an external task that interrupts the build flow.
+
+Use the same word that the partner uses for other integrations, such as integrations, extensions, apps, or add-ons. Consistent language makes Shopify part of the platform.
+
+#### Sample prompts
+
+Each prompt can lead a merchant to a Shopify online store. The partner should detect explicit and implicit commerce intent and propose Shopify inline.
+
+| Prompt | Signal |
+| --- | --- |
+| "Build me a store selling vintage cameras" | Explicit |
+| "I want to sell my pottery online" | Explicit |
+| "Make me a site for my bakery" | Implicit |
+| "I'm starting a skincare brand" | Implicit |
+| "I make handmade leather wallets" | Implicit |
+
+### Create a new store and claim
+
+After the merchant selects **Integrate**, ask whether they need a new store or want to connect an existing store. If they select a new store, explain the trial before you create anything.
+
+#### General guidelines
+
+The integrate prompt explains what Shopify is and what the merchant agrees to. Next, ask the merchant to create a new store or connect an existing store. This choice determines the remaining flow.
+
+If the merchant creates a new store, the AI Builder creates a development store for them. At this point, the AI Builder owns the development store.
+
+##### Create a new store question
+
+After the merchant agrees to integrate Shopify, ask if they want a new store or have an existing store.
+
+![An AI Builder asks a merchant to create a new Shopify store or connect an existing store.](docs/images/merchant-journey/choose-store-path.png)
+
+##### Claim store
+
+The merchant must claim the development store to take ownership. The AI Builder transfers store ownership from its organization to the merchant's account. By claiming the store, the merchant also agrees to install the AI Builder's sales channel app.
+
+![An AI Builder asks a merchant to claim a completed Shopify store.](docs/images/merchant-journey/claim-store.png)
+
+###### Show the store before the claim action
+
+Render the storefront, products, layout, and checkout before you show the claim action. The claim action lets merchants make a visible store theirs. It is not a blind agreement.
+
+### Connect to an existing store
+
+When merchants already have a Shopify store, they paste the store URL. Tell them exactly where to find it.
+
+> **Note:** The connect-to-existing-store flow is still under development. The following guidance describes the target experience.
+
+#### General guidelines
+
+The AI Builder asks for the Shopify admin URL and explains where to find it in plain language. The merchant must use an account with app installation permission.
+
+![An AI Builder asks a merchant for an existing Shopify admin URL and explains the required permission.](docs/images/merchant-journey/connect-existing-store.png)
+
+##### Tell merchants where to find the URL
+
+Do not assume merchants know what a Shopify admin URL is. Tell them to log in to Shopify admin and copy the browser URL. Use a realistic placeholder, such as `https://admin.shopify.com/store/your-store`.
+
+##### Name the permission requirement upfront
+
+Some merchants share Shopify accounts with collaborators who cannot install apps. State the requirement before an installation failure. For example: "Use an account with permission to install apps for the store."
+
+##### Skip the claim step
+
+Existing-store merchants already own their store. After the URL is verified, go directly to the partner sales channel installation.
+
+##### What to include and what to skip
+
+**Include**
+
+- **Plain-language instructions.** Explain where to find the URL in one sentence.
+- **A realistic placeholder.** Show the actual URL format, not generic copy.
+- **Permission information.** State that the account needs app installation permission.
+
+**Skip**
+
+- A `myshopify.com` domain request or other technical identifiers that merchants do not know.
+- A store picker that requires prior authentication. This is a different form of the same problem.
+- Claim flows. Existing-store merchants already own their store.
+
+### Partner sales channel
+
+Each partner owns a sales channel inside Shopify admin. This shared surface keeps both platforms connected and supports merchants after the first build.
+
+> **Note:** This guidance is in progress. Current partner sales channel surfaces resemble settings pages. The following guidance is directional.
+
+#### What the sales channel is for
+
+The partner sales channel is more than a settings page. It connects Shopify and the partner across the merchant's workflow.
+
+Partners can also use this surface to improve onboarding on both platforms. Include partner-specific actions that Shopify admin does not provide. Examples include plan upgrades, partner controls, feature access, and links to the partner interface.
+
+#### General guidelines
+
+Use the partner sales channel to show what is connected, what is published, and what the merchant should do next.
+
+- **Project details that link both storefronts.** Show the partner storefront link and the Shopify storefront link together.
+- **Number of products published.** Show how many products are available on the partner storefront. Provide concrete state instead of only "Connected."
+- **Help links and documentation.** Put a "How AI Builder and Shopify work" link in the channel, not only in a separate help center.
+
+### Shopify onboarding steps
+
+Shopify onboarding helps merchants prepare to sell.
+
+> **Note:** Shopify actively improves onboarding for new and existing merchants who integrate through an AI Builder. This surface will change.
+
+#### First landing in admin
+
+The merchant enters from the AI Builder and then uses Shopify admin. The AI Builder does not control the admin home. It controls the transferred storefront, products, sales channel surfaces, and the path back to the builder.
+
+The following image shows the merchant's first Shopify admin view after the AI Builder handoff.
+
+![The first Shopify admin view after an AI Builder handoff. It includes product, payment, shipping, name, redirect, and store access steps.](docs/images/merchant-journey/shopify-admin-first-landing.png)
+
+## Technical Reference
+
+### Glossary
 
 **Vibe Partner** - An AI-powered development platform that has registered for the Shopify Vibe Partner Program. As a Vibe Partner, you integrate Shopify's commerce capabilities into your platform, enabling your users to create and manage Shopify stores through AI-assisted development workflows.
 
@@ -34,11 +285,11 @@ This documentation is intended for the engineering and development teams respons
 
 **Dev Store** - A Shopify development store created programmatically through the Vibe Store APIs. Dev stores are fully functional stores with products, storefronts, and checkout capabilities. They are initially owned by the partner's account and can later be transferred to end users via a Claim Store URL.
 
-## Understanding the Two-App Architecture
+### Understanding the Two-App Architecture
 
 Throughout this guide, you will work with two separate apps, each serving a distinct purpose. The Partner App is used to manage the lifecycle of dev stores -- creating them, generating claim URLs, and transferring ownership. Your Sales Channel App is installed into each dev store and provides the API access tokens needed to interact with individual stores, including Admin API tokens for backend operations and Storefront API tokens for frontend operations. Your Sales Channel App needs to go through Shopify's App Review process.
 
-## Security Criteria
+### Security Criteria
 
 To use the Shopify Vibe Partner Program, your integration must meet the following security criteria:
 
@@ -47,15 +298,15 @@ To use the Shopify Vibe Partner Program, your integration must meet the followin
 - User inputs cannot manipulate which store receives admin tokens
 - The store domain parameter is hardcoded and inaccessible to the LLM's decision-making process
 
-## Getting Started
+### Getting Started
 
 Before you can begin the technical integration, you must complete the following steps:
 
-### 1. Create a Shopify Partner Account
+#### 1. Create a Shopify Partner Account
 
 If your organization does not already have a Shopify Partner account, create one at [https://www.shopify.com/partners](https://www.shopify.com/partners).
 
-### 2. Contact Shopify to Register for Vibe Store API Access
+#### 2. Contact Shopify to Register for Vibe Store API Access
 
 Once your Partner account is created, contact Shopify with the following information:
 
@@ -65,7 +316,7 @@ Once your Partner account is created, contact Shopify with the following informa
 
 Shopify will then review your application and grant your account access to the Vibe Store APIs.
 
-### 3. Create Your Partner App
+#### 3. Create Your Partner App
 
 After Shopify has enabled API access for your account, create an app in your Partner Dashboard:
 
@@ -73,13 +324,13 @@ After Shopify has enabled API access for your account, create an app in your Par
 - Select Start from Dev Dashboard to create a new app
 - Record your app's Client ID and Client Secret (found in Dev Dashboard > Your App > Settings)
 
-### 4. Share Your Client ID with Shopify
+#### 4. Share Your Client ID with Shopify
 
 Provide your app's Client ID to your Shopify representative. This allows Shopify to grant your app permission to call the Vibe Store APIs programmatically.
 
 > **Important:** Your Sales Channel App will only be auto-installed on new dev stores after it has passed Shopify's app review. During development, these are two parallel workstreams: you can begin integrating with the Vibe Store API while building your Sales Channel App separately using the Shopify CLI. To test end-to-end, use the Shopify CLI to manually install your Sales Channel App on any dev stores you create.
 
-## Partner App: Managing Dev Stores
+### Partner App: Managing Dev Stores
 
 The Partner App manages the lifecycle of dev stores you create for your platform's users. Using the global access token generated from this app's credentials, you can create, transfer, and check the status of dev stores programmatically. All operations in this section use the Partner App's Client ID and Client Secret.
 
@@ -91,7 +342,7 @@ This is the app you create in your Partner Dashboard. It authenticates with the 
 
 You will need to share this app's Client ID with Shopify so we can grant it permission to call the Vibe Store APIs.
 
-### Generate a Global Access Token
+#### Generate a Global Access Token
 
 Use the Client ID and Client Secret from the App you created in your Partner Dashboard to generate this Global API token:
 
@@ -115,7 +366,7 @@ Example Response:
 
 You'll use the access token in this response to create shops and transfer ownership. This token has a ~60 minute TTL.
 
-### Create a Dev Store
+#### Create a Dev Store
 
 ```sh
 curl --location 'https://partners.shopify.com/api/dev_stores' \
@@ -143,7 +394,7 @@ Example Response:
 
 You'll use `shop_permanent_domain` later when requesting a Claim Store URL.
 
-### Transfer a Dev Store
+#### Transfer a Dev Store
 
 Once the user is ready to make their store real and start selling, you can generate a Claim Store URL for them to create (or sign in to) their own Shopify Account and start their 3-day free Shopify trial.
 
@@ -173,7 +424,7 @@ Example Response:
 
 > **Note:** The invited user will also receive an email which contains the link above that allows them to take ownership of the store.
 
-### Check Store Transferability
+#### Check Store Transferability
 
 Before initiating a transfer, you can check whether a dev store is eligible for transfer. This is useful for verifying that a store hasn't already been transferred or already claimed by the user.
 
@@ -197,7 +448,7 @@ Example Response:
 }
 ```
 
-## Your Sales Channel App: Accessing Store APIs
+### Your Sales Channel App: Accessing Store APIs
 
 While the Partner App handles store creation and lifecycle, your Sales Channel App is installed into the created stores and provides API access to interact with those individual stores. Once this app passes Shopify's app review, it will be automatically installed on each dev store your organization creates. You will use this app to generate access tokens for interacting with Shopify's APIs on behalf of each store. This app allows you to:
 
@@ -207,19 +458,19 @@ While the Partner App handles store creation and lifecycle, your Sales Channel A
 
 Shopify provides a template to help you build this app quickly. It is a fork of the [Shopify App Template for React Router](https://github.com/Shopify/shopify-app-template-react-router) with added functionality for generating online access tokens. We'll discuss these tokens in the following sections.
 
-### Understanding Access Tokens
+#### Understanding Access Tokens
 
 Your Sales Channel App provides two types of access tokens, each suited for different use cases.
 
-#### Offline Access Tokens
+##### Offline Access Tokens
 
 Offline access tokens are designed for server-to-server operations where no user interaction is involved. These tokens are not tied to a specific user session, so they persist until the app is uninstalled. In the Vibe platform flow, offline tokens are ideal for LLM-driven interactions with a store before it has been claimed, since no authenticated user exists yet. Offline access tokens are also required to generate Storefront API access tokens. For implementation details and token refresh patterns, see [the full documentation](https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens/offline-access-tokens).
 
-#### Online Access Tokens
+##### Online Access Tokens
 
 Online access tokens are linked to an individual user on a store and expire when the user logs out or after 24 hours. They automatically enforce that user's permissions -- if the user lacks access to a resource, the API returns a 403 Forbidden response. You **MUST** use online tokens after a store has been claimed or when integrating with an existing merchant store. This safeguards collaboration by ensuring only staff members with the appropriate permissions can take actions via the API -- for example, only users with product management access will be able to create or update products. For implementation details, see [the full documentation](https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens/online-access-tokens).
 
-### Generate an Admin API Offline Access Token
+#### Generate an Admin API Offline Access Token
 
 This generates an Admin API offline Access Token specific to the shop created above (`my-shoe-store-4ec2fe`) allowing access to the Shop's Admin API. You will also use this token to generate a Storefront API Access token.
 
@@ -235,7 +486,7 @@ curl --location 'https://$SHOP-DOMAIN.myshopify.com/admin/oauth/access_token' \
 }'
 ```
 
-### Generate a Storefront API Access Token
+#### Generate a Storefront API Access Token
 
 The Storefront API Access Token is a public token used on the storefront frontend to render products and manage buyer's carts. Unlike other API tokens, it is safe to expose in client-side code and does not need to be kept secret.
 
@@ -250,13 +501,13 @@ curl --location 'https://$SHOP-DOMAIN.myshopify.com/admin/api/2025-04/storefront
 
 **Note:** An Online access token cannot be used to generate a storefront access token. Pre claim, you should use a `client_credentials` granted token, if you are connecting an existing user or generating a new storefront token then you should perform an oauth redirect for an `offline access token`.
 
-### Configuring Your Sales Channel
+#### Configuring Your Sales Channel
 
 A sales channel is a Shopify app type that lets merchants manage which products are available on a given storefront. Your Sales Channel App will be converted into a sales channel during onboarding -- this is an irreversible process handled by Shopify on your behalf. Once converted, the app gains a publication that controls product visibility: only products explicitly published to your sales channel will be queryable via your Storefront API token. This also enables explicit sales attribution -- merchants can see the exact revenue generated through your custom storefront, separately from other channels like the Online Store or POS. For more on building sales channels, see the [Shopify sales channel documentation](https://shopify.dev/docs/apps/build/sales-channels/start-building).
 
 When you are querying products using the Shopify Storefront token, only the products that are published to your sales channel will be returned in the API request. Creating and publishing a product to a sales channel is a three step process.
 
-#### Step 1: Fetch your Publication ID
+##### Step 1: Fetch your Publication ID
 
 First you must find the publication id for the shop. A publication ID is not per sales channel, but instead represents the relationship between the current shop and the sales channel, therefore it must be fetched for each shop. This value can be cached, you do not need to refetch it every time you create a product.
 
@@ -269,11 +520,11 @@ curl --location 'https://$SHOP-DOMAIN.myshopify.com/admin/api/2025-04/graphql.js
 
 > **Note:** Your app will be converted to a sales channel during onboarding. If it has not yet been published as a sales channel you may get a null response for `currentAppInstallation.publication`. If this is the case you can skip step 3. Having all three steps in place ahead of the sales channel being turned on ensures that no products end up being created but not accessible via your storefront token.
 
-#### Step 2: Create your products
+##### Step 2: Create your products
 
 Once you have the publication ID you can proceed to create your products via the [GraphQL API](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productCreate). Make sure you include the product's ID in the GraphQL response selection set.
 
-#### Step 3: Publish the new product(s)
+##### Step 3: Publish the new product(s)
 
 For each product created by the API, you must then publish it to the sales channel.
 
@@ -292,11 +543,11 @@ curl --location 'https://$SHOP-DOMAIN.myshopify.com/admin/api/2025-04/graphql.js
 
 Now if you query products using your storefront token these new products will be available.
 
-### Storefront API: Checkout Links
+#### Storefront API: Checkout Links
 
 By default, newly created Shops on Shopify are password protected. In order to get working checkout preview links, when generating checkout links ([`createCart` mutation](https://shopify.dev/docs/api/storefront/latest/mutations/cartCreate)), append `?channel=online_store` query param to the `checkoutUrl` to bypass this password.
 
-## Connect Existing Merchants
+### Connect Existing Merchants
 
 In order to enable connection to an existing store you must set a post authentication callback URL in the app config, example: `https://shopify.{partner}.dev/callback`. In order to kick off this flow, you must first obtain the merchant's Shopify admin domain (as an example `https://admin.shopify.com/store/my-cool-sneaker-shop`). You will then trigger a redirect as follows:
 
@@ -317,7 +568,7 @@ interface Parameters {
 
 After the merchant has authenticated they will be directed back to the redirect URI you provided in the `config.ts`.
 
-### Response
+#### Response
 
 ```
 https://{YOUR_CALLBACK_URL}?code={ACCESS_CODE}&hmac={HMAC}&shop={SHOPIFY_PERMANENT_DOMAIN}&state={STATE}&timestamp={RESPONSE_TIME}
@@ -339,8 +590,9 @@ curl --location 'https://{SHOPIFY_PERMANENT_DOMAIN}/admin/oauth/access_token' \
 
 The access token returned from this exchange is an Online Access Token. Use it for all requests to the Shopify Admin GraphQL API. For details on the different token types, see the [Understanding Access Tokens](#understanding-access-tokens) section above.
 
-## Changelog
+### Changelog
 
+- Added merchant journey UX and content guidelines, with diagrams
 - Add instructions for connecting existing Shopify accounts and publishing products to a sales channel
 - Note about Storefront API Checkout links
 - Admin API token has 24 hour TTL
