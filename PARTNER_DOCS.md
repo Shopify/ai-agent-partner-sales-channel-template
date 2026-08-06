@@ -48,7 +48,7 @@ Merchants start by expressing commerce intent to begin their journey with Shopif
 
 Use these conventions to name each moment and write its copy. The conventions make Shopify integrations consistent across AI builders.
 
-Shopify is the commerce engine behind your users' stores. It powers their products, checkout, and payments. Your platform builds the store's look and feel, and Shopify makes it sales-ready. These conventions are currently live with Lovable, Manus, Replit, and v0.
+Shopify is the commerce engine behind your users' stores. It powers their products, checkout, and payments. Your platform builds the store's look and feel, and Shopify makes it sales-ready.
 
 #### Principles
 
@@ -203,7 +203,7 @@ Render the storefront, products, layout, and checkout before you show the claim 
 
 When merchants already have a Shopify store, they paste the store URL. Tell them exactly where to find it.
 
-> **Note:** Replit and v0 continue to develop this flow. Manus has a working version. The following guidance describes the target experience.
+> **Note:** The connect-to-existing-store flow is still under development. The following guidance describes the target experience.
 
 #### General guidelines
 
