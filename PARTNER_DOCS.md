@@ -296,6 +296,10 @@ Now if you query products using your storefront token these new products will be
 
 By default, newly created Shops on Shopify are password protected. In order to get working checkout preview links, when generating checkout links ([`createCart` mutation](https://shopify.dev/docs/api/storefront/latest/mutations/cartCreate)), append `?channel=online_store` query param to the `checkoutUrl` to bypass this password.
 
+### Mandatory Compliance Webhooks
+
+Shopify requires all public apps to respond to data privacy requests (GDPR and similar) before the app can pass review. The template includes the three required compliance webhooks (`customers/data_request`, `customers/redact`, `shop/redact`) wired up in [`shopify.app.toml`](/shopify.app.toml) with a handler at [`/app/routes/webhooks/app/compliance.ts`](/app/routes/webhooks/app/compliance.ts). The handler verifies each request and responds with a `200` status but takes no action, because this template doesn't store personal data. If you add personal data storage, update the handler to delete or export that data on request. See the [privacy law compliance guide](https://shopify.dev/docs/apps/build/compliance/privacy-law-compliance) for details.
+
 ## Connect Existing Merchants
 
 In order to enable connection to an existing store you must set a post authentication callback URL in the app config, example: `https://shopify.{partner}.dev/callback`. In order to kick off this flow, you must first obtain the merchant's Shopify admin domain (as an example `https://admin.shopify.com/store/my-cool-sneaker-shop`). You will then trigger a redirect as follows:
@@ -346,3 +350,4 @@ The access token returned from this exchange is an Online Access Token. Use it f
 - Admin API token has 24 hour TTL
 - Added docs for `storefront_redirect_url` to Claim Store call
 - Fixed the Check Store Transferability API and added more example API responses
+- Added mandatory GDPR compliance webhooks to the template and documentation

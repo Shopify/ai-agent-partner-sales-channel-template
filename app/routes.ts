@@ -14,6 +14,7 @@ export default [
     ...prefix("app", [
       route("uninstalled", "./routes/webhooks/app/uninstalled.ts"),
       route("scopes_update", "./routes/webhooks/app/scopes_update.ts"),
+      route("compliance", "./routes/webhooks/app/compliance.ts"),
     ]),
   ]),
 
