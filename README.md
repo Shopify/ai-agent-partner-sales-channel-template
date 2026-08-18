@@ -29,7 +29,7 @@ Local development is powered by [the Shopify CLI](https://shopify.dev/docs/apps/
 **NOTE** We have added testcases that fail if any of these steps are missed. You can run `pnpm run test` to validate that
 these placeholders have been correctly replaced.
 
-For in depth documentation on how to integrate with Shopify refer to [PARTNER_DOCS.md](./PARTNER_DOCS.md)
+For in depth documentation on how to integrate with Shopify refer to [PARTNER_DOCS.md](./PARTNER_DOCS/introduction.md)
 
 #### Your app config
 
