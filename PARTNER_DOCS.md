@@ -52,7 +52,7 @@ Shopify is the commerce engine behind your users' stores. It powers their produc
 
 #### Principles
 
-Four rules apply to each merchant-facing string.
+Four rules apply to each merchant-facing message:
 
 ##### Explain before the click
 
@@ -84,7 +84,7 @@ Replace insider vocabulary with plain language.
 | dev store, development store | your store |
 | auth, OAuth, authenticate | log in or sign in. Do not expose the technical term. |
 
-#### Talking about Shopify, principles for your agent
+#### Talking about Shopify - principles for your agent
 
 The preceding guidance applies to deterministic surfaces, such as buttons, cards, and set strings. This section applies to what your agent says about Shopify in open conversation. Treat these principles as agent rules.
 
@@ -261,7 +261,7 @@ Use the partner sales channel to show what is connected, what is published, and 
 
 Shopify onboarding helps merchants prepare to sell.
 
-> **Note:** Shopify actively improves onboarding for new and existing merchants who integrate through an AI Builder. This surface will change.
+> **Note:** Shopify actively improves onboarding for new and existing merchants who integrate through an AI Builder. This surface can change.
 
 #### First landing in admin
 
