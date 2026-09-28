@@ -1,6 +1,6 @@
 # Integrate with Shopify
 
-When merchants express commerce intent, the AI Builder proposes a Shopify integration.
+When merchants express intent, the AI Builder proposes a Shopify integration.
 
 ## General guidelines
 
@@ -14,14 +14,14 @@ When a merchant signals that they want to sell, suggest Shopify inline. Examples
 
 ### Communicate what Shopify is and what the merchant agrees to
 
-Give this information before the click. Name Shopify as the commerce engine that powers the merchant's storefront, products, and checkout. Show the value, including real checkout, free store creation, and sales across channels.
+Give this information before the click. Name Shopify as the commerce engine that powers the merchant's store, products, and checkout. Show the value, including real checkout, free store creation, and sales across channels.
 
 ### What to include and what to skip
 
 **Include**
 
-- **What Shopify is.** "Shopify is the commerce engine. It powers your storefront, products, and checkout."
-- **What gets created.** "A real Shopify store, with a live storefront and connected checkout, free to try."
+- **What Shopify is.** "Shopify is the commerce engine. It powers your store, products, and checkout."
+- **What gets created.** "A real Shopify store, with a live store and connected checkout, free to try."
 
 **Skip**
 
@@ -32,7 +32,7 @@ Give this information before the click. Name Shopify as the commerce engine that
 
 Word choice determines whether Shopify feels like a built-in capability or an external setup task. "Integrate Shopify" or "Enable Shopify" presents a one-click capability. "Connect to Shopify" or "Install Shopify" suggests an external task that interrupts the build flow.
 
-Use the same word that the partner uses for other integrations, such as integrations, extensions, apps, or add-ons. Consistent language makes Shopify part of the platform.
+Use the same word that you use for other integrations, such as integrations, extensions, apps, or add-ons. Consistent language makes Shopify part of the platform.
 
 ## Sample prompts
 
@@ -52,8 +52,8 @@ Each prompt can lead a merchant to a Shopify online store. The partner should de
 
 - [Introduction](../introduction.md)
 - [Merchant Journey](../merchant_journey/overall_merchant_flow.md)
-  - [Overall merchant flow](../merchant_journey/overall_merchant_flow.md)
-  - [Overall content guidelines](../merchant_journey/overall_content_guidelines.md)
+  - [Merchant flow](../merchant_journey/overall_merchant_flow.md)
+  - [Content guidelines](../merchant_journey/overall_content_guidelines.md)
   - [Integrate with Shopify](../merchant_journey/integrate_with_shopify.md)
   - [Create a new store and claim](../merchant_journey/create_and_claim_store.md)
   - [Connect to an existing store](../merchant_journey/connect_existing_store.md)

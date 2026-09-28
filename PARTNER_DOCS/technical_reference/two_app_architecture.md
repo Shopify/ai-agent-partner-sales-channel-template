@@ -8,8 +8,8 @@ Throughout this guide, you will work with two separate apps, each serving a dist
 
 - [Introduction](../introduction.md)
 - [Merchant Journey](../merchant_journey/overall_merchant_flow.md)
-  - [Overall merchant flow](../merchant_journey/overall_merchant_flow.md)
-  - [Overall content guidelines](../merchant_journey/overall_content_guidelines.md)
+  - [Merchant flow](../merchant_journey/overall_merchant_flow.md)
+  - [Content guidelines](../merchant_journey/overall_content_guidelines.md)
   - [Integrate with Shopify](../merchant_journey/integrate_with_shopify.md)
   - [Create a new store and claim](../merchant_journey/create_and_claim_store.md)
   - [Connect to an existing store](../merchant_journey/connect_existing_store.md)

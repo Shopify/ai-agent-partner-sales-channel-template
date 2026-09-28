@@ -1,4 +1,4 @@
-# Overall content guidelines
+# Content guidelines
 
 Use these conventions to name each moment and write its copy. The conventions make Shopify integrations consistent across AI builders.
 
@@ -10,7 +10,7 @@ Four rules apply to each merchant-facing message:
 
 ### Explain before the click
 
-Say what Shopify is, why it is valuable, and what the merchant agrees to before they commit.
+Tell the merchant what Shopify is, why it is valuable, and what the merchant agrees to before they commit.
 
 ### Don't assume, orient
 
@@ -18,11 +18,11 @@ Always make sure the merchant knows where they are in the process and what to do
 
 ### No insider terms
 
-Write for someone who has never used Shopify. Replace words that only make sense inside Shopify.
+Write for someone who has never used Shopify. Replace words that only make sense to people who already have familiarity with Shopify.
 
 ### One word per moment
 
-Use the canonical verb for each step. The headline and the action button or call to action should match.
+Use the [canonical verb](#framing-and-voice) for each step. The headline and the action button or call to action should match.
 
 ## Words to avoid
 
@@ -45,7 +45,7 @@ The preceding guidance applies to deterministic surfaces, such as buttons, cards
 ### Facts to state correctly
 
 - **Shopify is the commerce engine.** It powers products, checkout, and payments. The storefront is built on the partner platform, and Shopify makes it sales-ready.
-- **It's free to build.** A paid plan is only needed when the merchant is ready to sell. Plans start at $1 per month.
+- **It's free to build.** A paid plan is only needed when the merchant is ready to sell.
 - **Creating a store does not charge the merchant** or commit them to selling.
 
 Do not improvise these facts. If you are unsure of a number or term, follow the guidance in [Defer when unsure](#defer-when-unsure).
@@ -59,7 +59,7 @@ Do not improvise these facts. If you are unsure of a number or term, follow the 
 
 ### Framing and voice
 
-- Talk about Shopify as a capability inside the partner platform, not a separate setup tool.
+- Talk about Shopify as a capability inside your platform, not a separate setup tool.
 - Use the canonical verbs: create a store, connect an existing store, claim, and subscribe. Use "connect" only for an existing store.
 - Write for someone who has never used Shopify. Avoid insider terms such as admin, backend, dev store, and OAuth.
 - Use a straightforward and friendly voice. Do not oversell.
@@ -85,8 +85,8 @@ Keep changing facts current. Do not hardcode pricing, trial terms, or store stat
 
 - [Introduction](../introduction.md)
 - [Merchant Journey](../merchant_journey/overall_merchant_flow.md)
-  - [Overall merchant flow](../merchant_journey/overall_merchant_flow.md)
-  - [Overall content guidelines](../merchant_journey/overall_content_guidelines.md)
+  - [Merchant flow](../merchant_journey/overall_merchant_flow.md)
+  - [Content guidelines](../merchant_journey/overall_content_guidelines.md)
   - [Integrate with Shopify](../merchant_journey/integrate_with_shopify.md)
   - [Create a new store and claim](../merchant_journey/create_and_claim_store.md)
   - [Connect to an existing store](../merchant_journey/connect_existing_store.md)
