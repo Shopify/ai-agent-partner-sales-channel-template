@@ -22,7 +22,7 @@ jobs:
 
       - name: Install pnpm
         if: ${{ matrix.manager == 'pnpm' }}
-        uses: pnpm/action-setup@903f9c1a6ebcba6cf41d87230be49611ac97822e # v6
+        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6
         with:
           version: 10
 
