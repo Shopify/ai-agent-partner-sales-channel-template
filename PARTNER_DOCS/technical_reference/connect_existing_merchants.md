@@ -61,5 +61,6 @@ The access token returned from this exchange is an Online Access Token. Use it f
   - [Getting Started](../technical_reference/getting_started.md)
   - [Partner App: Managing Dev Stores](../technical_reference/partner_app.md)
   - [Your Sales Channel App: Accessing Store APIs](../technical_reference/sales_channel_app.md)
+  - [Connect an external storefront domain](../technical_reference/connect_external_storefront_domain.md)
   - [Connect Existing Merchants](../technical_reference/connect_existing_merchants.md)
   - [Changelog](../technical_reference/changelog.md)

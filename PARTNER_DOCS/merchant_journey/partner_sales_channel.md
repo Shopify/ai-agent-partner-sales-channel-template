@@ -16,6 +16,8 @@ Use the partner sales channel to show what is connected, what is published, and 
 - **Number of products published.** Show how many products are available on the partner storefront. Provide concrete state instead of only "Connected."
 - **Help links and documentation.** Put a "How AI Builder and Shopify work" link in the channel, not only in a separate help center.
 
+To associate the partner storefront with its Shopify store, follow [Connect an external storefront domain](../technical_reference/connect_external_storefront_domain.md).
+
 ---
 
 ## In this guide
@@ -36,5 +38,6 @@ Use the partner sales channel to show what is connected, what is published, and 
   - [Getting Started](../technical_reference/getting_started.md)
   - [Partner App: Managing Dev Stores](../technical_reference/partner_app.md)
   - [Your Sales Channel App: Accessing Store APIs](../technical_reference/sales_channel_app.md)
+  - [Connect an external storefront domain](../technical_reference/connect_external_storefront_domain.md)
   - [Connect Existing Merchants](../technical_reference/connect_existing_merchants.md)
   - [Changelog](../technical_reference/changelog.md)
