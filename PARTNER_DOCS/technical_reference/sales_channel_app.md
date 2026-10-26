@@ -55,6 +55,8 @@ curl --location 'https://$SHOP-DOMAIN.myshopify.com/admin/api/2025-04/storefront
 
 A sales channel is a Shopify app type that lets merchants manage which products are available on a given storefront. Your Sales Channel App will be converted into a sales channel during onboarding -- this is an irreversible process handled by Shopify on your behalf. Once converted, the app gains a publication that controls product visibility: only products explicitly published to your sales channel will be queryable via your Storefront API token. This also enables explicit sales attribution -- merchants can see the exact revenue generated through your custom storefront, separately from other channels like the Online Store or POS. For more on building sales channels, see the [Shopify sales channel documentation](https://shopify.dev/docs/apps/build/sales-channels/start-building).
 
+After the storefront is deployed to a stable hostname, [connect its external domain to the Shopify store](connect_external_storefront_domain.md).
+
 When you are querying products using the Shopify Storefront token, only the products that are published to your sales channel will be returned in the API request. Creating and publishing a product to a sales channel is a three step process.
 
 ### Step 1: Fetch your Publication ID
@@ -121,5 +123,6 @@ Shopify requires all public apps to respond to data privacy requests (GDPR and s
   - [Getting Started](../technical_reference/getting_started.md)
   - [Partner App: Managing Dev Stores](../technical_reference/partner_app.md)
   - [Your Sales Channel App: Accessing Store APIs](../technical_reference/sales_channel_app.md)
+  - [Connect an external storefront domain](../technical_reference/connect_external_storefront_domain.md)
   - [Connect Existing Merchants](../technical_reference/connect_existing_merchants.md)
   - [Changelog](../technical_reference/changelog.md)

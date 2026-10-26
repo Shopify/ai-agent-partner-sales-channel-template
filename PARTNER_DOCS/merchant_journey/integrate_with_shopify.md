@@ -66,5 +66,6 @@ Each prompt can lead a merchant to a Shopify online store. The partner should de
   - [Getting Started](../technical_reference/getting_started.md)
   - [Partner App: Managing Dev Stores](../technical_reference/partner_app.md)
   - [Your Sales Channel App: Accessing Store APIs](../technical_reference/sales_channel_app.md)
+  - [Connect an external storefront domain](../technical_reference/connect_external_storefront_domain.md)
   - [Connect Existing Merchants](../technical_reference/connect_existing_merchants.md)
   - [Changelog](../technical_reference/changelog.md)
