@@ -2,17 +2,15 @@
 
 > **Note:** The connect-to-existing-store flow is still under development. The following guidance describes the target experience.
 
-When merchants already have a Shopify store, they paste the store URL. Tell them exactly where to find it.
+When merchants already have a Shopify store, send them to Shopify's store picker. They do not need to enter a store name or URL.
 
 ## General guidelines
 
-The AI Builder asks for the Shopify admin URL and explains where to find it in plain language. The merchant must use an account with app installation permission.
+The AI Builder offers a **Connect existing store** action. Shopify handles sign-in if needed, store selection, and authorization. The merchant must use an account with app installation permission.
 
-![An AI Builder asks a merchant for an existing Shopify admin URL and explains the required permission.](../../docs/images/merchant-journey/connect-existing-store.png)
+### Send merchants to Shopify's store picker
 
-### Tell merchants where to find the URL
-
-Do not assume merchants know what a Shopify admin URL is. Tell them to log in to Shopify admin and copy the browser URL. Use a realistic placeholder, such as `https://admin.shopify.com/store/your-store`.
+Tell merchants what happens next in plain language: "Choose your store on Shopify to continue." Send them directly to the [store-picker authorization link](../technical_reference.md#connect-an-existing-store). Do not add a store-name or URL field, or require a separate Shopify sign-in step before this action.
 
 ### Name the permission requirement upfront
 
@@ -20,20 +18,20 @@ Some merchants share Shopify accounts with collaborators who cannot install apps
 
 ### Skip the claim step
 
-Existing-store merchants already own their store. After the URL is verified, go directly to the partner sales channel installation.
+Existing-store merchants already own their store. After they select a store, continue directly to the partner sales channel installation and authorization.
 
 ### What to include and what to skip
 
 **Include**
 
-- **Plain-language instructions.** Explain where to find the URL in one sentence.
-- **A realistic placeholder.** Show the actual URL format, not generic copy.
+- **A direct action.** Let merchants select **Connect existing store** to open Shopify's store picker.
+- **Plain-language instructions.** Explain that they will choose their store on Shopify and may need to sign in.
 - **Permission information.** State that the account needs app installation permission.
 
 **Skip**
 
-- A `myshopify.com` domain request or other technical identifiers that merchants do not know.
-- A store picker that requires prior authentication. This is a different form of the same problem.
+- Requests for a store name, Shopify admin URL, `myshopify.com` domain, or other technical identifiers.
+- A separate, partner-hosted store picker or sign-in prerequisite before opening Shopify's picker.
 - Claim flows. Existing-store merchants already own their store.
 
 ---
@@ -49,12 +47,4 @@ Existing-store merchants already own their store. After the URL is verified, go 
   - [Connect to an existing store](../merchant_journey/connect_existing_store.md)
   - [Partner sales channel](../merchant_journey/partner_sales_channel.md)
   - [Shopify onboarding steps](../merchant_journey/shopify_onboarding.md)
-- [Technical Reference](../technical_reference/glossary.md)
-  - [Glossary](../technical_reference/glossary.md)
-  - [Understanding the Two-App Architecture](../technical_reference/two_app_architecture.md)
-  - [Security Criteria](../technical_reference/security_criteria.md)
-  - [Getting Started](../technical_reference/getting_started.md)
-  - [Partner App: Managing Dev Stores](../technical_reference/partner_app.md)
-  - [Your Sales Channel App: Accessing Store APIs](../technical_reference/sales_channel_app.md)
-  - [Connect Existing Merchants](../technical_reference/connect_existing_merchants.md)
-  - [Changelog](../technical_reference/changelog.md)
+- [Technical Reference](../technical_reference.md)
