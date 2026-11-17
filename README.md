@@ -94,7 +94,7 @@ This template comes pre-configured with examples of:
 
 1. Setting up your Shopify app in [/app/shopify.server.ts](/app/shopify.server.ts).
 2. Responding to webhooks. Please see [/app/routes/webhooks.tsx](/app/routes/webhooks/app/uninstalled.ts).
-3. Mandatory GDPR compliance webhooks at [/app/routes/webhooks/app/compliance.ts](/app/routes/webhooks/app/compliance.ts). See [PARTNER_DOCS.md](./PARTNER_DOCS/technical_reference/sales_channel_app.md#mandatory-compliance-webhooks) for details.
+3. Mandatory GDPR compliance webhooks at [/app/routes/webhooks/app/compliance.ts](/app/routes/webhooks/app/compliance.ts). See [Technical reference](./PARTNER_DOCS/technical_reference.md#mandatory-compliance-webhooks) for details.
 
 Please read the [documentation for @shopify/shopify-app-react-router](https://shopify.dev/docs/api/shopify-app-react-router) to see what other API's are available.
 
