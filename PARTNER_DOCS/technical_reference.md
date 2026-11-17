@@ -7,6 +7,7 @@ Use this page for implementation details and the [merchant journey](merchant_jou
 - [Create and claim a new store](#create-and-claim-a-new-store)
 - [Connect an existing store](#connect-an-existing-store)
 - [Access store APIs](#access-store-apis)
+- [Connect an external storefront domain](#connect-an-external-storefront-domain)
 - [Security and compliance](#security-and-compliance)
 
 ## Get access
@@ -237,11 +238,169 @@ Only products published to your sales channel are returned by its Storefront API
    }
    ```
 
-The channel also provides sales attribution, so merchants can distinguish revenue from your storefront from other channels.
+The channel also provides sales attribution, so merchants can distinguish revenue from your storefront from other channels. After deploying to a stable hostname, [connect the external storefront domain](#connect-an-external-storefront-domain).
 
 ### Preview checkout
 
 New stores are password-protected by default. For checkout preview links returned by [`cartCreate`](https://shopify.dev/docs/api/storefront/latest/mutations/cartCreate), append the `channel=online_store` query parameter to `checkoutUrl` to bypass the storefront password.
+
+## Connect an external storefront domain
+
+The storefront runs on your platform's hostname while checkout remains on Shopify. Publish the storefront hostname to associate it with the Shopify store, then verify ownership when required.
+
+**Merchant experience:** Show the connected storefront and project links in the [partner sales channel](merchant_journey/partner_sales_channel.md#general-guidelines).
+
+### Prerequisites
+
+- A stable storefront hostname, such as `storefront.example.com` or a custom domain. Your platform handles the deployment, hostname attachment, traffic routing and HTTPS.
+- Your Sales Channel App installed on the shop.
+- Access to manage DNS for the ownership record's full name, or instructions for the merchant to make the required changes.
+
+Examples are illustrative and have not been executed. Replace the example hostname and angle-bracket placeholders with your own inputs or actual response values.
+
+### 1. Request the external-domain scope
+
+In [`shopify.app.toml`](../shopify.app.toml), append `write_domains` to the existing comma-separated `scopes` string under `[access_scopes]`. Both domain mutations require this scope. Keep all existing entries.
+
+Release the updated app configuration and request the added permission through your normal installation/authorization flow. See [app configuration: access scopes](https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes).
+
+### 2. Publish the hostname on Shopify
+
+Use the shop's **unstable Admin GraphQL API** for both calls. Configure your client explicitly for `unstable` rather than relying on its default version. This is temporary until we add this API to a future stable release.
+
+Authenticate with the installed Sales Channel App's **shop Admin token**, kept server-side. Before claim, use the [offline Admin API token](#generate-an-offline-admin-api-token-before-claim); for a claimed or existing store, use an online user token that enforces the user's permissions. See [apps and access tokens](#apps-and-access-tokens). Provider, Partner App and Storefront API tokens do not apply here.
+
+Keep the same shop and publishing app identity for both calls. Refreshing an authorized token for that identity is fine.
+
+```http
+POST https://<SHOP_SUBDOMAIN>.myshopify.com/admin/api/unstable/graphql.json
+Content-Type: application/json
+X-Shopify-Access-Token: <SHOP_ADMIN_ACCESS_TOKEN>
+```
+
+Call [`externalPartnerStorefrontDomainPublish`](https://shopify.dev/docs/api/admin-graphql/unstable/mutations/externalPartnerStorefrontDomainPublish). Send a JSON body with `query` containing this GraphQL document and `variables` containing the object below:
+
+```graphql
+mutation PublishExternalStorefrontDomain($host: String!) {
+  externalPartnerStorefrontDomainPublish(host: $host) {
+    domain {
+      host
+      verificationStatus
+      verificationRecords {
+        type
+        name
+        value
+        status
+      }
+    }
+    resourceCreated
+    userErrors {
+      code
+      field
+      message
+    }
+  }
+}
+```
+
+Variables — pass a hostname without a scheme or path:
+
+```json
+{
+  "host": "storefront.example.com"
+}
+```
+
+The response includes `domain { host verificationStatus verificationRecords { type name value status } }`, `resourceCreated`, and `userErrors`. An unverified hostname can return `ACTION_REQUIRED` with a TXT record whose status is `ADD`. Use the actual returned DNS name and value.
+
+Check HTTP/transport failures, top-level GraphQL `errors` (including partial `data`), and every `userErrors { code field message }` entry before using the domain. Treat a null/missing payload or domain as failure. Both user-error `code` and `field` can be null. Apply these checks to **both mutations**; HTTP 200 or an empty user-error list is insufficient without inspecting the domain and record statuses.
+
+Save `domain.host` and its shop/app context for verification; Shopify may normalize the input's case. Retain the returned records for the DNS step. `resourceCreated` is a nullable creation/reuse indicator, not a readiness result: a repeated publish can return an incomplete verification with `resourceCreated: false`.
+
+Choose the next step:
+
+- **`VERIFIED` and an empty `verificationRecords` list:** skip steps 3 and 4. There may be no TXT verification object to verify.
+- **Otherwise:** handle the records in step 3, then call verify in step 4. A nonempty list requires verify even when `verificationStatus` is already `VERIFIED` and every record is `OK`.
+
+### 3. Configure the ownership TXT records
+
+Use each record's returned `type`, `name` and `value` at the authoritative DNS provider. The record type is `TXT`; its value is the **expected ownership proof**, not an observed conflicting value.
+
+Act on each record's `status`:
+
+- `ADD`: add the missing record.
+- `FAILURE`: correct the conflicting verification value.
+- `OK`: leave the record unchanged.
+
+The returned `name` is relative to the storefront hostname's **apex domain**. The full TXT name is the returned `name` + `.` + apex. For `storefront.example.com`, the apex is `example.com`.
+
+Configure the authoritative DNS zone for that **full verification name**, which may differ from a zone delegated for `storefront.example.com`. Follow the provider's relative-name or fully-qualified-name format without appending the apex twice. Use the actual returned name/value; do not generate replacements or copy the placeholders above. Preserve unrelated DNS records and TXT values.
+
+The TXT record proves ownership; it does not route storefront traffic. A provider accepting the write does not mean Shopify has observed it. Allow for propagation before verification, without assuming a fixed delay.
+
+### 4. Verify ownership
+
+Call [`externalPartnerStorefrontDomainVerifyTxt`](https://shopify.dev/docs/api/admin-graphql/unstable/mutations/externalPartnerStorefrontDomainVerifyTxt) with the saved `domain.host` from publish. Use the same shop endpoint and publishing app. This is a mutation that checks ownership and can start asynchronous connection work.
+
+```graphql
+mutation VerifyExternalStorefrontDomainTxt($host: String!) {
+  externalPartnerStorefrontDomainVerifyTxt(host: $host) {
+    domain {
+      host
+      verificationStatus
+      verificationRecords {
+        type
+        name
+        value
+        status
+      }
+    }
+    userErrors {
+      code
+      field
+      message
+    }
+  }
+}
+```
+
+Variables — use the actual returned hostname:
+
+```json
+{
+  "host": "storefront.example.com"
+}
+```
+
+A successful ownership check returns `verificationStatus: VERIFIED`, with any verified records marked `OK`. This does not establish activation readiness.
+
+After the response checks in step 2, inspect `domain.verificationStatus`:
+
+- `ACTION_REQUIRED`: missing DNS still needs attention. Check the returned records and the authoritative zone for their full names.
+- `FAILED`: conflicting DNS or terminal/expired verification. Correcting DNS or repeating verify may not resolve an expired or terminal failure.
+- `VERIFIED`: Shopify has observed the required ownership proof.
+
+### Activation and storefront URLs
+
+Ownership verification does not confirm asynchronous connection or primary-domain selection. Those also depend on shop capabilities and eligibility. Neither mutation reports activation or certificate readiness. Do not use them to poll for activation or mark the storefront fully active from their responses. Check your platform's hostname attachment, deployment and HTTPS separately.
+
+Keep API endpoints, checkout URLs and customer-account URLs under their existing Shopify contracts. Do not rewrite them or append arbitrary Shopify paths to the external hostname.
+
+### Handle failures and reruns
+
+Use the returned error details to choose a recovery action; a rejection is not necessarily HTTP 403 or a bad token.
+
+- `FEATURE_NOT_ENABLED` or access rejection: confirm onboarding access for the selected app/shop.
+- `APP_NOT_INSTALLED`: check the installation; you may need to [connect the store](#connect-an-existing-store).
+- Host validation, connection conflicts, `EXTERNAL_STOREFRONT_DOMAIN_NOT_ENTITLED_ERROR` or `MAXIMUM_EXTERNAL_DOMAINS_ERROR`: resolve the reported hostname, entitlement or domain-limit issue before retrying.
+- `PUBLISHED_BY_ANOTHER_API_CLIENT`: an incomplete verification belongs to another app; resolve publishing-app ownership.
+- `DOMAIN_VERIFICATION_NOT_FOUND`: check the saved host and shop/app identity, and whether publish returned the empty-record branch that skips verification.
+
+For recoverable transport, throttling or transient DNS/projection failures, use controlled backoff under the [Admin API error guidance](https://shopify.dev/docs/api/admin-graphql/unstable). Top-level `UNAVAILABLE` can indicate a transient DNS/projection failure. An error or lost response may follow a partial side effect, so do not assume the request made no change or that every mutation is safe to retry.
+
+After a DNS correction propagates, you can run verify again subject to API rate/error handling. For expired or terminally failed verification, a deliberate re-publish may be needed and may return new records. Always use the fresh response values.
+
+Do not use publish as a status poll. For development hosts eligible for direct connection without TXT verification, publishing a changed hostname can remove the same app's superseded hosts. Treat a hostname change as a configuration change.
 
 ## Security and compliance
 
